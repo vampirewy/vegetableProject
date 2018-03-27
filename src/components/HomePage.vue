@@ -1,8 +1,6 @@
 <template>
   <div>
     <header class="head">
-      <h1>sdfsf</h1>
-      <h2>w42424</h2>
     </header>
     <div class="content"></div>
   </div>
