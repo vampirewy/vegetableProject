@@ -1,0 +1,17 @@
+{
+  "name": "vueproject",
+  "version": "1.0.0",
+  "description": "this is vueproject",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "bable-loader": "0.0.1-security",
+    "vue": "^2.5.16",
+    "webpack": "^3.6.0"
+  }
+}
