@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": " webpack-dev-server --open --hot --inline",
-    "packaging":"webpack --display-modules --display-chunks"  
+    "packaging": "webpack --display-modules --display-chunks"
   },
   "repository": {
     "type": "git",
@@ -26,6 +26,7 @@
     "less": "^3.0.1",
     "less-loader": "^4.1.0",
     "style-loader": "^0.20.3",
+    "uglifyjs-webpack-plugin": "^1.2.4",
     "vue": "^2.5.16",
     "vue-loader": "^14.2.2",
     "vue-router": "^3.0.1",
