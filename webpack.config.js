@@ -6,8 +6,29 @@ module.exports={
     filename:'main.js'
   },
   resolve:{
+    extensions:['.js','.vue','.json'],
     alias:{
       'vue$': 'vue/dist/vue.esm.js'
     }
+  },
+  module:{
+    rules:[
+      {
+        test:/\.js$/,
+        loader:'babel-loader',
+        exclude:/node_modules/
+      },
+      {
+        test:/\.vue$/,
+        loader:'vue-loader'
+      },
+      {
+        test:/\.less$/,
+        loader:'style-loader!css-loader!less-loader'
+      }
+    ]
+  },
+  devServer:{
+    contentBase:'./dist'
   }
 }
