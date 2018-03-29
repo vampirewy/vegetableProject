@@ -2,7 +2,8 @@
 
     1. 启动 npm start;
     2. 打包 npm run packaging;
-## 设置babel
+
+## 设置babel(Error: Couldn't find preset "es2015",是无法编译es6语法)---解决方案
 
     1. webpack.config.js不需要改动;
     2. 安装babel-preset-stage-2;
