@@ -1,1 +1,4 @@
-### https://juejin.im/post/5a425cb4f265da43294e4f2e
+## Webpack手动搭建Vue项目
+
+    1. 启动 npm start;
+    2. 打包 npm run packaging;

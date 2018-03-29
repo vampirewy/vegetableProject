@@ -5,7 +5,8 @@
   "main": "webpack.config.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": " webpack-dev-server --open --hot --inline"
+    "start": " webpack-dev-server --open --hot --inline",
+    "packaging":"webpack --display-modules --display-chunks"  
   },
   "repository": {
     "type": "git",
@@ -30,7 +31,6 @@
     "vue-router": "^3.0.1",
     "vue-template-compiler": "^2.5.16",
     "webpack": "^3.6.0",
-    "webpack-cli": "^2.0.13",
     "webpack-dev-server": "^2.9.1"
   }
 }
