@@ -10,7 +10,6 @@ module.exports={
   resolve:{
     //去除文件后缀
     extensions:['.js','.vue','.json'],
-
     alias:{
       'vue$': 'vue/dist/vue.esm.js'
     }
@@ -44,7 +43,8 @@ module.exports={
     hot:true,
     host:'localhost',
     historyApiFallback:true,
-    inline:true
+    inline:true,
+    proxy:{}
   },
   plugins:[
     new webpack.HotModuleReplacementPlugin()
