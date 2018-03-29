@@ -55,6 +55,7 @@ module.exports={
     new HtmlWebpackPlugin({
       template:'./index.html'
     }),
+    //压缩JS文件
     new UglifyJsPlugin()
   ]
 }
