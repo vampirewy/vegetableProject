@@ -1,20 +1,23 @@
 const path=require('path')
 const webpack=require('webpack')
+//生成index.html
 const HtmlWebpackPlugin=require('html-webpack-plugin')
+//压缩js
 const UglifyJsPlugin=require('uglifyjs-webpack-plugin')
+//提取CSS和vue内CSS,所有的.css文件和vue内的style都会以style标签的形式被添加到页面的head里面，不利于资源的缓存而且降低了页面的加载速度
+const ExtractTextPlugin=require('extract-text-webpack-plugin')
 module.exports={
   entry:'./src/main.js',
   output:{
-    path:'@/dist',
+    path:path.resolve(__dirname,'dist'),
     filename:'js/[name].js'
   },
   resolve:{
     //require文件时,去除文件后缀
     extensions:['.js','.vue','.json'],
-    //正在使用的是vue的运行时版本，而此版本中的编译器时不可用的，我们需要把它切换成运行时 + 编译的版本
     alias:{
-      'vue$': 'vue/dist/vue.esm.js',
-      '@':path.resolve(__dirname)
+      //正在使用的是vue的运行时版本，而此版本中的编译器时不可用的，我们需要把它切换成运行时 + 编译的版本
+      'vue$': 'vue/dist/vue.esm.js'
     }
   },
   module:{
@@ -26,17 +29,28 @@ module.exports={
       },
       {
         test:/\.vue$/,
-        loader:'vue-loader'
+        loader:'vue-loader',
+      //  use:ExtractTextPlugin.extract({
+      //    fallback:'vue-style-loader',
+      //    use:[
+      //      {'loader':'css-loader'}
+      //    ]
+      //  })
       },
       {
         test:/\.less$/,
-        loader:'vue-style-loader!css-loader!less-loader'
+        // loader:'vue-style-loader!css-loader!less-loader',
+        use:ExtractTextPlugin.extract({
+          fallback:'vue-style-loader',
+          use:['css-loader','less-loader']
+        })
       },
       {
         test:/\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader:'url-loader' ,
         options:{
           limit:10000,
+          //输出文件名
           name:'img/[name].[ext].[hash]'
         }
       },
@@ -45,6 +59,7 @@ module.exports={
         loader:'url-loader',
         options:{
           limit:10000,
+          //输出文件名
           name:'audio/[name].[ext].[hash]'
         }
       },
@@ -53,6 +68,7 @@ module.exports={
         loader:'url-loader',
         options:{
           limit:10000,
+          //输出文件名
           name:'fonts/[name].[ext].[hash]'
         }
       }
@@ -82,6 +98,8 @@ module.exports={
       template:'./index.html'
     }),
     //压缩JS文件
-    new UglifyJsPlugin()
+    new UglifyJsPlugin(),
+    //提取CSS
+    new  ExtractTextPlugin('index.css')
   ]
 }
