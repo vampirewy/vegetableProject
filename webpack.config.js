@@ -30,12 +30,18 @@ module.exports={
       {
         test:/\.vue$/,
         loader:'vue-loader',
-      //  use:ExtractTextPlugin.extract({
-      //    fallback:'vue-style-loader',
-      //    use:[
-      //      {'loader':'css-loader'}
-      //    ]
-      //  })
+       options:{
+         loaders:{
+           css:ExtractTextPlugin.extract({
+             use:'css-loader',
+             fallback:'vue-style-loader'
+           }),
+           'less':ExtractTextPlugin.extract({
+             use:['css-loader','less-loader'],
+             fallback:'vue-style-loader'
+           })
+         }
+       }
       },
       {
         test:/\.less$/,
@@ -99,7 +105,7 @@ module.exports={
     }),
     //压缩JS文件
     new UglifyJsPlugin(),
-    //提取CSS
-    new  ExtractTextPlugin('index.css')
+    //提取CSS,与JS文件分离
+    new  ExtractTextPlugin('styles/index.css')
   ]
 }
