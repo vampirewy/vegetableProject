@@ -1,7 +1,7 @@
 ## Webpack手动搭建Vue项目
 
     1. 启动 npm start;
-    2. 打包 npm run packaging;
+    2. 打包编译 webpack;
 
 ## 设置babel(Error: Couldn't find preset "es2015",是无法编译es6语法)---解决方案
 

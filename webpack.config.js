@@ -5,14 +5,16 @@ const UglifyJsPlugin=require('uglifyjs-webpack-plugin')
 module.exports={
   entry:'./src/main.js',
   output:{
-    path:path.resolve(__dirname,'dist'),
-    filename:'[name].js'
+    path:'@/dist',
+    filename:'js/[name].js'
   },
   resolve:{
     //require文件时,去除文件后缀
     extensions:['.js','.vue','.json'],
+    //正在使用的是vue的运行时版本，而此版本中的编译器时不可用的，我们需要把它切换成运行时 + 编译的版本
     alias:{
-      'vue$': 'vue/dist/vue.esm.js'
+      'vue$': 'vue/dist/vue.esm.js',
+      '@':path.resolve(__dirname)
     }
   },
   module:{
@@ -28,7 +30,31 @@ module.exports={
       },
       {
         test:/\.less$/,
-        loader:'style-loader!css-loader!less-loader'
+        loader:'vue-style-loader!css-loader!less-loader'
+      },
+      {
+        test:/\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        loader:'url-loader' ,
+        options:{
+          limit:10000,
+          name:'img/[name].[ext].[hash]'
+        }
+      },
+      {
+        test:/\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+        loader:'url-loader',
+        options:{
+          limit:10000,
+          name:'audio/[name].[ext].[hash]'
+        }
+      },
+      {
+        test:/\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        loader:'url-loader',
+        options:{
+          limit:10000,
+          name:'fonts/[name].[ext].[hash]'
+        }
       }
     ]
   },
