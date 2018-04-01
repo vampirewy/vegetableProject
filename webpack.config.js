@@ -95,6 +95,7 @@ module.exports={
     host:'localhost',
     historyApiFallback:true,
     inline:true,
+    progress:true,
     proxy:{},
     headers:{}
   },
