@@ -95,7 +95,8 @@ module.exports={
     host:'localhost',
     historyApiFallback:true,
     inline:true,
-    proxy:{}
+    proxy:{},
+    headers:{}
   },
   plugins:[
     //自动刷新,这里配置了模块热替换后，package.json script里start里不需要设置--hot，不然报错和整页刷新;反之设置了--hot，这里就不需要设置了
