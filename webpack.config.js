@@ -13,7 +13,7 @@ module.exports={
     filename:'js/[name].js'
   },
   resolve:{
-    //require文件时,去除文件后缀
+    //require文件时,自动带上后缀去访问文件是否存在 
     extensions:['.js','.vue','.json'],
     alias:{
       //正在使用的是vue的运行时版本，而此版本中的编译器时不可用的，我们需要把它切换成运行时 + 编译的版本
