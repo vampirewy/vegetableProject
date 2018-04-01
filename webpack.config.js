@@ -24,7 +24,8 @@ module.exports={
     rules:[
       {
         test:/\.js$/,
-        loader:'babel-loader',
+        //cacheDirectory用于缓存babel编译结果，加速重新编译速度
+        use:['babel-loader?cacheDirectory'],
         exclude:/node_modules/
       },
       {
@@ -83,11 +84,11 @@ module.exports={
   devtool:'inline-source-map',
   //webpack-dev-server(自动刷新及热更新)
   devServer:{
-    //在端口号为1234建立本地服务,
-    contentBase:'./dist',
+    //在端口号为222建立本地服务,
+    // contentBase:'./src',
     /**首先devServer的publicPath路径是指向内存生产的路径，不在物理硬盘上，所以我的index.html里面引用的js路径，应该相对于publicPath地址。
     注意：publicPath地址默认不写会读取output的publicPath路径，publicPath总是以‘/’开头。**/
-    publicPath:'./dist',
+    // publicPath:'./dist',
     port:2222,
     open:true,
     hot:true,
@@ -97,14 +98,14 @@ module.exports={
     proxy:{}
   },
   plugins:[
-    //自动刷新
+    //自动刷新,这里配置了模块热替换后，package.json script里start里不需要设置--hot，不然报错和整页刷新;反之设置了--hot，这里就不需要设置了
     new webpack.HotModuleReplacementPlugin(),
     //动态生成index.html,script标签
     new HtmlWebpackPlugin({
       template:'./index.html'
     }),
     //压缩JS文件
-    new UglifyJsPlugin(),
+    // new UglifyJsPlugin(),
     //提取CSS,与JS文件分离
     new  ExtractTextPlugin('styles/index.css')
   ]
