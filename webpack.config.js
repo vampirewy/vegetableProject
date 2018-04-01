@@ -57,7 +57,7 @@ module.exports={
         options:{
           limit:10000,
           //输出文件名
-          name:'img/[name].[ext].[hash]'
+          name:'img/[name].[ext].[hash:8]'
         }
       },
       {
@@ -66,7 +66,7 @@ module.exports={
         options:{
           limit:10000,
           //输出文件名
-          name:'audio/[name].[ext].[hash]'
+          name:'audio/[name].[ext].[hash:8]'
         }
       },
       {
@@ -75,7 +75,7 @@ module.exports={
         options:{
           limit:10000,
           //输出文件名
-          name:'fonts/[name].[ext].[hash]'
+          name:'fonts/[name].[ext].[hash:8]'
         }
       }
     ]
