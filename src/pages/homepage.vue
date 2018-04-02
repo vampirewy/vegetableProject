@@ -15,6 +15,6 @@
 </script>
 <style scoped lang="less">
   .homepage{
-    border:1px solid red;
+    border:.5px solid red;
   }
 </style>

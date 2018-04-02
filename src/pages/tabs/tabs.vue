@@ -27,11 +27,4 @@
 .mint-tab-item{
   padding:0;
 }
-.tabs{
-  .icon{
-    width:1rem;
-    height:1rem;
-    background:url(../../img/tabs/icons.png)
-  }
-}
 </style>
