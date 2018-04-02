@@ -6,6 +6,7 @@ const webpack=require('webpack')
 const ExtractTextPlugin=require('extract-text-webpack-plugin')
 //压缩JS
 const UglifyJsPlugin=require('uglifyjs-webpack-plugin')
+const HtmlWebpackPlugin=require('html-webpack-plugin')
 module.exports=merge(base,{
   module:{
     rules:[
@@ -48,6 +49,14 @@ module.exports=merge(base,{
     //CSS提取，不以style形式注入index.html文件中
     new ExtractTextPlugin({
       filename:'styles/[name].css'
+    }),
+    new HtmlWebpackPlugin({
+      template:'./index.html',
+      minify:{
+        collapseWhitespace:true, //删除空白行和换行
+        removeComments:true //去除注释
+      },
+      hash:true //在script和link里注入hash值，主要为清除缓存
     })
   ]
 })
