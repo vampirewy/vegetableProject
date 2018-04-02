@@ -1,6 +1,6 @@
 <template>
   <div class="homepage">
-    <h1>{{msg}}</h1>
+    <p>{{msg}}</p>
   </div>
 </template>
 
@@ -8,10 +8,13 @@
   export default {
     data(){
       return{
-        msg:'hello Vue'
+        msg:'这是商城'
       }
     }
 }
 </script>
 <style scoped lang="less">
+  .homepage{
+    border:1px solid red;
+  }
 </style>

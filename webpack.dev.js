@@ -17,7 +17,7 @@ module.exports=merge(base,{
     host:'localhost',
     historyApiFallback:true,
     inline:true,
-    progress:true,
+    // progress:true,
     proxy:{},
     headers:{}
   },

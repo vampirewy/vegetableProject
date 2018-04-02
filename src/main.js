@@ -5,6 +5,7 @@ import router from './router/router'
 import MintUi from 'mint-ui'
 import 'mint-ui/lib/style.css'
 import common from './less/common.less'
+
 Vue.use(MintUi)
 
 var vm=new Vue({
