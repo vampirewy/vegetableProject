@@ -15,6 +15,9 @@
 </script>
 <style scoped lang="less">
   .homepage{
-    border:.5px solid red;
+    border:1px solid red;
+    p{
+      font-size:30px;
+    }
   }
 </style>
