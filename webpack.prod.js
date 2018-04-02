@@ -37,7 +37,9 @@ module.exports=merge(base,{
   },
   plugins:[
     //压缩JS文件
-    new UglifyJsPlugin(),
+    new UglifyJsPlugin({
+      exclude:/node_modules/
+    }),
     //CSS提取，不以style形式注入index.html文件中
     new ExtractTextPlugin({
       filename:'styles/index.css'

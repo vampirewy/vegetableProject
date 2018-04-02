@@ -59,7 +59,9 @@ module.exports={
     new CleanWebpackPlugin(['dist']),
     //动态生成index.html,script标签
     new HtmlWebpackPlugin({
-      template:'./index.html'
+      template:'./index.html',
+      minify:{},
+      hash:true
     })
   ]
 }
