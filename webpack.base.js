@@ -52,6 +52,10 @@ module.exports={
           //输出文件名,带8位的hash
           name:'fonts/[name].[ext].[hash:8]'
         }
+      },
+      {
+        test:/\.css$/,
+       use:['style-loader','css-loader']
       }
     ]
   },
@@ -60,8 +64,11 @@ module.exports={
     //动态生成index.html,script标签
     new HtmlWebpackPlugin({
       template:'./index.html',
-      minify:{},
-      hash:true
+      minify:{
+        collapseWhitespace:true, //删除空白行和换行
+        removeComments:true //去除注释
+      },
+      hash:true //在script和link里注入hash值，主要为清除缓存
     })
   ]
 }
