@@ -14,8 +14,8 @@ module.exports=merge(base,{
     port:2222,
     open:true,
     hot:true,
-    // host:'localhost',
-    host:'192.168.1.108',
+    host:'localhost',
+    // host:'192.168.1.108',
     historyApiFallback:true,
     inline:true,
     // progress:true,
@@ -33,7 +33,7 @@ module.exports=merge(base,{
         loader:'vue-style-loader!css-loader!less-loader'
       },
       {
-        test:/.\css$/,
+        test:/\.css$/,
         use:['style-loader','css-loader']
       }
     ]

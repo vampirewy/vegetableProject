@@ -15,6 +15,13 @@
 
    >2.extract-text-webpack-plugin(提取CSS)不能与其一起使用，会导致css文件变更，但页面不刷新;
 
-## 以将生产环境和开发环境分开，但未使用环境变量来控制
+## 已将生产环境和开发环境分开
+
+## 添加babel-plugin-transform-runtime插件
+
+>主要作用: 
+
+> 减少冗余代码,Babel 转译后的代码要实现源代码同样的功能需要借助一些帮助函数;
+
 
 http://imweb.io/topic/5a523cc0a192c3b460fce3a5
