@@ -50,6 +50,10 @@ module.exports=merge(base,{
       uglifyOptions:{
         compress:{
           drop_console:true  //去除console.log
+        },
+        output:{
+          beautify:false,
+          comments:false
         }
       }
     }),
@@ -61,7 +65,8 @@ module.exports=merge(base,{
       template:'./index.html',
       minify:{
         collapseWhitespace:true, //删除空白行和换行
-        removeComments:true //去除注释
+        removeComments:true, //去除注释
+        minifyJS:true //去除注释的script标签
       },
       hash:true //在script和link里注入hash值，主要为清除缓存
     })

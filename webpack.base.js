@@ -8,7 +8,7 @@ module.exports={
   entry:'./src/main.js',
   output:{
     path:path.resolve(__dirname,'dist'),
-    filename:'js/[name].js'
+    filename:'js/[name].[chunkhash:8].js'
   },
   resolve:{
     //require文件时,自动带上后缀去访问文件是否存在 
