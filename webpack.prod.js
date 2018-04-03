@@ -12,7 +12,7 @@ module.exports=merge(base,{
     rules:[
       {
         test:/\.vue$/,
-        loader:'vue-loader',
+        loader:'vue-loader',  //将.vue文件中的script template style标签提取出来，交由相对应的loader去处理  
        options:{
          loaders:{
            css:ExtractTextPlugin.extract({
@@ -55,7 +55,7 @@ module.exports=merge(base,{
     }),
     //CSS提取，不以style形式注入index.html文件中
     new ExtractTextPlugin({
-      filename:'styles/[name].css'
+      filename:'styles/[name].[chunkhash:8].css'
     }),
     new HtmlWebpackPlugin({
       template:'./index.html',
