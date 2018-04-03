@@ -31,6 +31,10 @@ module.exports=merge(base,{
       {
         test:/\.less$/,
         loader:'vue-style-loader!css-loader!less-loader'
+      },
+      {
+        test:/.\css$/,
+        use:['style-loader','css-loader']
       }
     ]
   },

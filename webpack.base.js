@@ -52,10 +52,6 @@ module.exports={
           //输出文件名,带8位的hash
           name:'fonts/[name].[ext].[hash:8]'
         }
-      },
-      {
-        test:/\.css$/,
-       use:['style-loader','css-loader']
       }
     ]
   },
