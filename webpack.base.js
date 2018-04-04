@@ -16,7 +16,8 @@ module.exports={
     alias:{
       //正在使用的是vue的运行时版本，而此版本中的编译器时不可用的，我们需要把它切换成运行时 + 编译的版本
       'vue$': 'vue/dist/vue.esm.js'
-    }
+    },
+    modules:[path.resolve(__dirname,'node_modules')]
   },
   module:{
     rules:[
@@ -24,7 +25,8 @@ module.exports={
         test:/\.js$/,
         //cacheDirectory用于缓存babel编译结果，加速重新编译速度
         use:['babel-loader?cacheDirectory'],
-        exclude:/node_modules/
+        exclude:/node_modules/,
+        include:path.resolve(__dirname,'src')
       },
       {
         test:/\.(png|jpe?g|gif|svg)(\?.*)?$/,
