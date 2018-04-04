@@ -1,6 +1,7 @@
 <template>
   <div class="homepage">
     <p>{{msg}}</p>
+    <img src="../img/tabs/pic_huodong_bg@3x.png" alt="">
   </div>
 </template>
 
