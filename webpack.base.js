@@ -17,6 +17,7 @@ module.exports={
       //正在使用的是vue的运行时版本，而此版本中的编译器时不可用的，我们需要把它切换成运行时 + 编译的版本
       'vue$': 'vue/dist/vue.esm.js'
     },
+    //告诉webpack去哪里找第三方下载的文件，提高速度
     modules:[path.resolve(__dirname,'node_modules')]
   },
   module:{
