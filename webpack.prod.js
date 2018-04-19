@@ -7,6 +7,7 @@ const ExtractTextPlugin=require('extract-text-webpack-plugin')
 //压缩JS
 const UglifyJsPlugin=require('uglifyjs-webpack-plugin')
 const HtmlWebpackPlugin=require('html-webpack-plugin')
+const HappyPack=require('happypack')
 module.exports=merge(base,{
   module:{
     rules:[
@@ -31,14 +32,16 @@ module.exports=merge(base,{
         // loader:'vue-style-loader!css-loader!less-loader',
         use:ExtractTextPlugin.extract({
           fallback:'vue-style-loader',
-          use:['css-loader','less-loader']
+          use:['happypack/loader?id=css-loader']
+          // use:['css-loader','less-loader']
         })
       },
       {
         test:/\.css$/,
         use:ExtractTextPlugin.extract({
           fallback:'style-loader',
-          use:['css-loader']
+          use:['happypack/loader?id=css-loader']
+          // use:['css-loader']
         })
       }
     ]
@@ -52,8 +55,8 @@ module.exports=merge(base,{
           drop_console:true  //去除console.log
         },
         output:{
-          beautify:false,
-          comments:false
+          beautify:false, //代码混淆
+          comments:false //去除注释
         }
       }
     }),
@@ -69,6 +72,10 @@ module.exports=merge(base,{
         minifyJS:true //去除注释的script标签
       },
       hash:true //在script和link里注入hash值，主要为清除缓存
+    }),
+    new HappyPack({
+      id:'css-loader',
+      loaders:['css-loader','less-loader']
     })
   ]
 })

@@ -4,11 +4,14 @@ const webpack=require('webpack')
 const HtmlWebpackPlugin=require('html-webpack-plugin')
 //清理dist文件夹
 const CleanWebpackPlugin=require('clean-webpack-plugin')
+//将任务分解给多个子线程去处理，子线种处理完后结果发给主线程
+const HappyPack=require('happypack')
 module.exports={
   entry:'./src/main.js',
   output:{
     path:path.resolve(__dirname,'dist'),
-    filename:'js/[name].[chunkhash:8].js'
+    //不能使用chunkhash
+    filename:'js/[name].[hash:8].js'
   },
   resolve:{
     //require文件时,自动带上后缀去访问文件是否存在 
@@ -25,7 +28,8 @@ module.exports={
       {
         test:/\.js$/,
         //cacheDirectory用于缓存babel编译结果，加速重新编译速度
-        use:['babel-loader?cacheDirectory'],
+        // use:['babel-loader?cacheDirectory'],
+        use:['happypack/loader?id=babel'],
         exclude:/node_modules/,
         include:path.resolve(__dirname,'src')
       },
@@ -63,6 +67,10 @@ module.exports={
     //动态生成index.html,script标签
     new HtmlWebpackPlugin({
       template:'./index.html'
+    }),
+    new HappyPack({
+      id:'babel',
+      loaders:['babel-loader?cacheDirectory']
     })
   ]
 }

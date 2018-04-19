@@ -2,6 +2,7 @@
 const merge=require('webpack-merge')
 const base=require('./webpack.base')
 const webpack=require('webpack')
+const HappyPack=require('happypack')
 module.exports=merge(base,{
   devtool:'inline-source-map',
   //webpack-dev-server(自动刷新及热更新)
@@ -26,6 +27,7 @@ module.exports=merge(base,{
     rules:[
       {
         test:/\.vue$/,
+        // use:['happypack/loader?id=vue-loader']
         loader:'vue-loader'
       },
       {
@@ -34,12 +36,21 @@ module.exports=merge(base,{
       },
       {
         test:/\.css$/,
+        // use:['happypack/loader?id=styles']
         use:['style-loader','css-loader']
       }
     ]
   },
   plugins:[
     //自动刷新,这里配置了模块热替换后，package.json script里start里不需要设置--hot，不然报错和整页刷新;反之设置了--hot，这里就不需要设置了
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    // new HappyPack({
+    //   id:'vue-loader',
+    //   loaders:['vue-loader']
+    // }),
+    // new HappyPack({
+    //   id:'styles',
+    //   use:['style-loader','css-loader']
+    // })
   ]
 })
