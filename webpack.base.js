@@ -6,6 +6,8 @@ const HtmlWebpackPlugin=require('html-webpack-plugin')
 const CleanWebpackPlugin=require('clean-webpack-plugin')
 //将任务分解给多个子线程去处理，子线种处理完后结果发给主线程
 const HappyPack=require('happypack')
+//共享进程池，防止资源占用过多,size必须填写，否则报错
+const happyThreadPool=HappyPack.ThreadPool({size:5})
 module.exports={
   entry:'./src/main.js',
   output:{
@@ -69,8 +71,9 @@ module.exports={
       template:'./index.html'
     }),
     new HappyPack({
-      id:'babel',
-      loaders:['babel-loader?cacheDirectory']
+      id:'babel',  
+      loaders:['babel-loader?cacheDirectory'],
+      threadPool:happyThreadPool
     })
   ]
 }

@@ -8,6 +8,8 @@ const ExtractTextPlugin=require('extract-text-webpack-plugin')
 const UglifyJsPlugin=require('uglifyjs-webpack-plugin')
 const HtmlWebpackPlugin=require('html-webpack-plugin')
 const HappyPack=require('happypack')
+//共享进程池，即多个happypack实例都使用同一个共享进程池中的子进程去处理任务，防止资源占用过多
+const happyThreadPool=HappyPack.ThreadPool({size:5})
 module.exports=merge(base,{
   module:{
     rules:[
@@ -75,7 +77,8 @@ module.exports=merge(base,{
     }),
     new HappyPack({
       id:'css-loader',
-      loaders:['css-loader','less-loader']
+      loaders:['css-loader','less-loader'],
+      threadPool:happyThreadPool
     })
   ]
 })

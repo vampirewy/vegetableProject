@@ -2,7 +2,7 @@
 const merge=require('webpack-merge')
 const base=require('./webpack.base')
 const webpack=require('webpack')
-const HappyPack=require('happypack')
+// const HappyPack=require('happypack')
 module.exports=merge(base,{
   devtool:'inline-source-map',
   //webpack-dev-server(自动刷新及热更新)

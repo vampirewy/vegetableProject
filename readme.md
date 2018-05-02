@@ -27,5 +27,7 @@
 
 > 主要作用:将单线程任务分解多个子线程去处理，提高构建速度
 
+> 使用happyThreadPool共享进程池，防止资源占用过多
+
 
 http://imweb.io/topic/5a523cc0a192c3b460fce3a5
