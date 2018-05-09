@@ -24,7 +24,7 @@
 </script>
 
 <style scoped lang="less">
-.mint-tab-item{
-  padding:0;
-}
+// .mint-tab-item{
+//   padding:0;
+// }
 </style>
