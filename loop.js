@@ -20,7 +20,7 @@ console.log(num);
 //   }
 // }
 // console.log(num);
-//普通循环语句
+//普通循环语句(上面for循环转换成while循环)
 var num=0,i=0;
 while(i<8){
   var j=0;

@@ -2,7 +2,7 @@ const gulp=require('gulp');
 const LoadPlugins=require('gulp-load-plugins')();
 const Open=require('open');
 gulp.task('js',function(){
-  gulp.src('./index.js')
+  gulp.src('./*.js')
   .pipe(LoadPlugins.connect.reload())
 });
 gulp.task('html',function(){
@@ -16,7 +16,7 @@ gulp.task('serve',function(){
     port:1111
   });
   Open('http://localhost:1111');
-  gulp.watch('./index.js',['js'])
+  gulp.watch('./*.js',['js'])
   gulp.watch('./index.html',['html'])
 });
 gulp.task('default',['serve']);
