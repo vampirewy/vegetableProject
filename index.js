@@ -30,5 +30,5 @@ while(i<8){
     j++;
   }
   i++;  
-}
+}  
 console.log(num);
