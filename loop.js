@@ -9,6 +9,16 @@ start:for (var i = 0 ; i < 8 ; i++){
   }
 }
 console.log(num);
+//label and continue
+var num=0;
+start:for(var i=0;i<10;i++){
+  for(var j=0;j<10;j++){
+    if(i==5&&j==5){continue start;}
+    num++;
+  }
+}
+console.log(num);
+
 //普通循环语句
 // var num = 0;
 // for (var i = 0 ; i < 10 ; i++){
@@ -32,3 +42,9 @@ while(i<8){
   i++;  
 }  
 console.log(num);
+//下方两个循环，结果一样
+for(var i=0;i<10;i++);console.log(i);
+var i=0;
+while(i<10){i++};
+console.log(i);
+
