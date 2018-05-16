@@ -17,5 +17,6 @@ gulp.task('serve',function(){
   });
   Open('http://localhost:1111');
   gulp.watch('./index.js',['js'])
+  gulp.watch('./index.html',['html'])
 });
 gulp.task('default',['serve']);
