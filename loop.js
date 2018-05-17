@@ -48,4 +48,30 @@ var i=0;
 while(i<10){i++};
 console.log(i); 
 
+//函数
+/*arguments代表实参，a与b代表命名参数，传参的时候可以不写命名参数，函数内部可以通过arguments直接来访问.
+*arguments的长度是由传入的参数决定的，不是由命名参数决定.
+*没传值的命名参数=undefined,等同于变量定义了但未初始化.
+*/
+function Add(a,b){
+  if(arguments.length==1){
+    document.write(a+10);
+  }else if(arguments.length==2){
+    arguments[1]=30;//直接改写传进来的20的值为30,此时命名参数b和arguments同为30
+    document.write(arguments[1]+b);
+  }
+};
+Add(10,20);
 
+
+function Add(a,b){
+  "use strict"//启用严格模式，必须在脚本第一行，不然失效
+  if(arguments.length==1){
+    document.write(a+10);
+  }else if(arguments.length==2){
+    arguments[1]=30;
+    console.log(arguments[1]+b); //50
+  }
+
+};
+Add(10,20);
