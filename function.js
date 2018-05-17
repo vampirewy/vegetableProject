@@ -32,9 +32,21 @@ function a(obj){
   obj={};
   //当局部变量obj，在函数a()执行完成后，就会被立马销毁
   console.log(obj);
+  /*局部变量obj在函数执行完成后会立即销毁
+  *如果需要使用局部变量
+  *可以用全局变量接或者使用闭包，直接供外部使用
+  */
+  function b(){
+    return obj;
+  }
+  return b;
 };
-a(obj);
+var C=a(obj)();
+console.log(C);
 console.log(obj);
+
+
+
 
 
 
