@@ -78,9 +78,9 @@ function changeColor(){
     /*活动对象swapColor的局部环境包含自己的所有对象(所有变量及函数)和全局对象;
     *changeColor这个和全局color都是可以访问的;
     */
-     var tempColor=anotherColor;
-     anotherColor=color;
-     color=tempColor;
+    var tempColor=anotherColor;
+    anotherColor=color;
+    color=tempColor;
   };
   swapColor();
 }
@@ -95,13 +95,39 @@ function returnfunc (propertyName) {
 
 var savefunc = returnfunc("name"); //调用returnfunc（）
 /**
- * 当调用returnfunc时，创建arguments对象、一个function匿名函数和propertyName形参
- * propertyName='name';
- * 变量savefunc得到是里面那个匿名函数
- * 当调用savefunc时，其实已经是调用里面的匿名函数，obj={name:Picasso}
- * 但匿名函数里又需引用returnfunc的形参，所以returnfunc还被引用着，无法被销毁
- * 返回obj[propertyName]=obj.name=Picasso
- */
+* 当调用returnfunc时，创建arguments对象、一个function匿名函数和propertyName形参
+* propertyName='name';
+* 变量savefunc得到是里面那个匿名函数
+* 当调用savefunc时，其实已经是调用里面的匿名函数，obj={name:Picasso}
+* 但匿名函数里又需引用returnfunc的形参，所以returnfunc还被引用着，无法被销毁
+* 返回obj[propertyName]=obj.name=Picasso
+*/
 var result = savefunc({name:"Picasso"});//调用savefunc（）
 alert(result);
 
+var scope = "global scope";
+function checkscope(){
+  var scope = "local scope";
+  function f(){
+    return scope;
+  }
+  return f;
+}
+checkscope()();
+
+/**
+ * vo:data=[] i=3 
+ * 
+ * 
+ */
+var data = [];
+for (var i = 0; i < 3; i++) {
+  data[i] = (function (i) {
+    return function(){
+      console.log(i);
+    }
+  })(i);
+}
+data[0]();
+data[1]();
+data[2]();
