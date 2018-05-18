@@ -105,15 +105,15 @@ var savefunc = returnfunc("name"); //调用returnfunc（）
 var result = savefunc({name:"Picasso"});//调用savefunc（）
 alert(result);
 
-var scope = "global scope";
-function checkscope(){
-  var scope = "local scope";
-  function f(){
-    return scope;
-  }
-  return f;
-}
-checkscope()();
+// var scope = "global scope";
+// function checkscope(){
+//   var scope = "local scope";
+//   function f(){
+//     return scope;
+//   }
+//   return f;
+// }
+// checkscope()();
 
 /**
  * vo:data=[] i=3 
@@ -131,3 +131,4 @@ for (var i = 0; i < 3; i++) {
 data[0]();
 data[1]();
 data[2]();
+
