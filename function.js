@@ -89,7 +89,7 @@ changeColor();
 
 function returnfunc (propertyName) {
   return function (obj) {       
-    return obj[propertyName];         //这里用方括号法访问属性，因为属性是变量（returnfunc（）函数的参数）
+    return obj[propertyName];//这里用方括号法访问属性，因为属性是变量（returnfunc（）函数的参数）
   };
 }
 
