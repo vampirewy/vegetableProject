@@ -46,7 +46,62 @@ console.log(C);
 console.log(obj);
 
 
+//函数声明式
+function c(a,b){
+  console.log(c.length) //2,此函数形参的长度，即a,b
+  console.log(arguments.length); //0
+}
+c();
+
+// alert(x); // function
+// var x = 10;
+// alert(x); // 10
+// x = 20;
+// function x() {}; //函数X变量提升比var的权重还要高
+// alert(x); // 20
 
 
+//变量对象中包含 var color=undefined和changeColor=undefined这两个对象
+/*
+*进入执行上下文时
+*全局color被赋值成red;
+*调用changeColor时，创建了arguments、anotherColor、swapColor这三个活动对象;
+*执行时，再被赋值
+*/
+var color='red';
+function changeColor(){
+  /*活动对象changeColor的局部环境中包含arguments对象、anotherColor和swapColor两个对象和全局对象;
+  *但这个局部环境不能访问swapColor这个活动对象的里的对象;
+  */
+  var anotherColor='blue';
+  function swapColor(){
+    /*活动对象swapColor的局部环境包含自己的所有对象(所有变量及函数)和全局对象;
+    *changeColor这个和全局color都是可以访问的;
+    */
+     var tempColor=anotherColor;
+     anotherColor=color;
+     color=tempColor;
+  };
+  swapColor();
+}
+changeColor();
 
+
+function returnfunc (propertyName) {
+  return function (obj) {       
+    return obj[propertyName];         //这里用方括号法访问属性，因为属性是变量（returnfunc（）函数的参数）
+  };
+}
+
+var savefunc = returnfunc("name"); //调用returnfunc（）
+/**
+ * 当调用returnfunc时，创建arguments对象、一个function匿名函数和propertyName形参
+ * propertyName='name';
+ * 变量savefunc得到是里面那个匿名函数
+ * 当调用savefunc时，其实已经是调用里面的匿名函数，obj={name:Picasso}
+ * 但匿名函数里又需引用returnfunc的形参，所以returnfunc还被引用着，无法被销毁
+ * 返回obj[propertyName]=obj.name=Picasso
+ */
+var result = savefunc({name:"Picasso"});//调用savefunc（）
+alert(result);
 
