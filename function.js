@@ -155,3 +155,13 @@ for(var i=0;i<3;i++){
 // console.log(date);
 console.log(date[0]());
 
+var make=function(x){
+  x=x||1;
+  return function(){
+    return x;
+  }
+};
+var account=make(2);
+var account1=make(3);
+console.log(account());
+alert(account1());
