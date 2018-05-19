@@ -56,21 +56,28 @@ foo(1);
 
 /*作用域链 (函数的作用域是函数定义的时候就决定了---JS为词法作用域)*/
 /*1.每个函数都有一个自身属性[[scope]],当函数创建时，会将父变量对象全保存到这个属性中；
-* 但这并不是函数完整的作用域链
+* 但这并不是函数完整的作用域链;
+* 2.代码不是一行一行执行的，是一段一段执行的;
 */
 
 /**1.函数创建时，各自的[[scope]]属性 
 * aScope.[[scope]]={global.VO==>scope='global'};
 * bScope.[[scope]]={aScope.AO&&global.VO};
-* 2.函数进入执行上下文时,函数的AO会被加入到作用链前端，全局的永远是在最外层;  
+* 2.函数进入执行上下文时,先创建aScope函数执行上下文，把它压入执行上下文栈
+*ESCStack=[
+  aSopeContent,
+  globalContent];  
 */
 var scope='global';
-function aScope(){
-  var scope='local';
+function aScope(x){
+  // var scope='local';
   function bScope(){
-    return scope;
+    return x;
   };
   return bScope();
 };
-console.log(aScope());
-
+var localScope=aScope(1);
+var local=aScope(2);
+console.log(localScope);
+console.log(local);
+alert(localScope==local)
