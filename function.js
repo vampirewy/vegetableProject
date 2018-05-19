@@ -152,7 +152,7 @@ for(var i=0;i<3;i++){
   date[i]=arr;
   // console.log(date[i]);
 };
-// console.log(date);
+console.log(date);
 console.log(date[0]());
 
 var make=function(x){
