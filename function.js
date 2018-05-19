@@ -105,30 +105,53 @@ var savefunc = returnfunc("name"); //调用returnfunc（）
 var result = savefunc({name:"Picasso"});//调用savefunc（）
 alert(result);
 
-// var scope = "global scope";
-// function checkscope(){
-//   var scope = "local scope";
-//   function f(){
-//     return scope;
-//   }
-//   return f;
-// }
-// checkscope()();
-
-/**
- * vo:data=[] i=3 
- * 
- * 
- */
-var data = [];
-for (var i = 0; i < 3; i++) {
-  data[i] = (function (i) {
-    return function(){
-      console.log(i);
-    }
-  })(i);
+var scope = "global scope";
+function checkscope(){
+  var scope = "local scope";
+  function f(){
+    return scope;
+  }
+  return f;
 }
-data[0]();
-data[1]();
-data[2]();
+checkscope()();
+
+// var data = [];
+// for (var i = 0; i < 3; i++) {
+//   data[i] = (function (i) {
+//     return function(){
+//       return i;
+//     }
+//   })(i);
+// }
+// data[0]();//0
+// data[1]();//1
+// data[2]();//2
+
+// var data1=[];
+// for(var i=0;i<3;i++){
+//   var a=function(x){
+//     return function(){
+//       return x;
+//     }
+//   };
+//   data1[i]=a(i);//data1[i]=function(){return x;}
+// };
+
+// var data2=[];
+// for(var i=0;i<3;i++){
+//   data2[i]=function(){return i;};
+// };
+// console.log(data2[0]());
+
+var date=[];
+for(var i=0;i<3;i++){
+  var arr=function(x){
+    function a(){return x;console.log(x);}
+    return a;
+  }(i);
+  date[i]=arr;
+  // console.log(date[i]);
+};
+// console.log(date);
+console.log(date[0]());
 
