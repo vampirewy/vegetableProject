@@ -65,46 +65,46 @@ foo(1);
 * bScope.[[scope]]={aScope.AO && global.VO};即形参x=undefined,bScope=function bScope(){};var scope='global';
 * 2.函数进入执行上下文时,先创建aScope函数执行上下文，把它压入执行上下文栈
 *   ESCStack=[
-    aSopeContent,
-    globalContent
-  ];  
+  aSopeContent,
+  globalContent
+];  
 * 3.aScope函数不立即执行,将[[scope]]属性复制并创建作用域链;
 * 4.用arguments创建活动对象加入形参、子函数、变量等;
-    aScopeContent={
-      arguments:{
-        x:undefined,
-        length:1
-      },
-      bScope:function bScope(){}
-    }  
+aScopeContent={
+  arguments:{
+    x:undefined,
+    length:1
+  },
+  bScope:function bScope(){}
+}  
 * 5.将活动对象压入作用域顶端 scope=[AO,[[scope]]]
 * 6.创建bScope函数执行上下文，压入执行上下文栈
 *   ESCStack=[
-      bScopeContent,
-      aSopeContent,
-      globalContent
-    ];
+  bScopeContent,
+  aSopeContent,
+  globalContent
+];
 * 7.将bScope的[[scope]]属性复制并创建作用域链;
 * 8.用arguments创建bScope活动对象并初始化; 
 *     bScopeContent={
-        arguments:{length:0},    
-    }
+  arguments:{length:0},    
+}
 * 9.将活动对象压入作用域链的顶端
 * 10.函数执行,修改AO的值 
 */
-  // var scope='global';
-  // function aScope(x){
-  //   // var scope='local';
-  //   function bScope(){
-  //     return x;
-  //   };
-  //   return bScope();
-  // };
-  // var localScope=aScope(1);
-  // var local=aScope(2);
-  // console.log(localScope);
-  // console.log(local);
-  // alert(localScope==local)
+// var scope='global';
+// function aScope(x){
+//   // var scope='local';
+//   function bScope(){
+//     return x;
+//   };
+//   return bScope();
+// };
+// var localScope=aScope(1);
+// var local=aScope(2);
+// console.log(localScope);
+// console.log(local);
+// alert(localScope==local)
 
 var total=(function(){
   //私有变量
@@ -128,7 +128,7 @@ var reduce=total.reduce();
 console.log(reduce);
 
 function time(s){
-  var num=1000;
+  var num=0;
   function timeModify(){
     s++;
     // if(s%5==0){
@@ -136,13 +136,21 @@ function time(s){
     // }
     return s;
   }
-  return timeModify;
+  function intervalTime(){
+    num+=1000;
+    return num;
+  }
+  return {
+    goTime:timeModify,
+    num:intervalTime
+  };
 }
-var timer=time(0);
+var timer=time(0).goTime;
+var num=time().num();
+console.log(num);
 setInterval(function(){
   var a=timer();
   console.log(a);
-},1000);
+},num);
 
-  
-  
+
