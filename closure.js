@@ -128,6 +128,7 @@ var reduce=total.reduce();
 console.log(reduce);
 
 function time(s){
+  var num=1000;
   function timeModify(){
     s++;
     // if(s%5==0){
