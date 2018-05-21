@@ -92,18 +92,56 @@ foo(1);
 * 9.将活动对象压入作用域链的顶端
 * 10.函数执行,修改AO的值 
 */
-  var scope='global';
-  function aScope(x){
-    // var scope='local';
-    function bScope(){
-      return x;
-    };
-    return bScope();
-  };
-  var localScope=aScope(1);
-  var local=aScope(2);
-  console.log(localScope);
-  console.log(local);
-  alert(localScope==local)
+  // var scope='global';
+  // function aScope(x){
+  //   // var scope='local';
+  //   function bScope(){
+  //     return x;
+  //   };
+  //   return bScope();
+  // };
+  // var localScope=aScope(1);
+  // var local=aScope(2);
+  // console.log(localScope);
+  // console.log(local);
+  // alert(localScope==local)
+
+var total=(function(){
+  //私有变量
+  var num=10;
+  //抛出去供外部使用的方法
+  return {
+    reduce:function(){
+      num--
+      return num;
+    },
+    increase:function(){
+      num++;
+      return num;
+    }
+  }
+})();
+total.reduce();
+total.reduce();
+total.reduce();
+var reduce=total.reduce();
+console.log(reduce);
+
+function time(s){
+  function timeModify(){
+    s++;
+    // if(s%5==0){
+    //   return '你好';
+    // }
+    return s;
+  }
+  return timeModify;
+}
+var timer=time(0);
+setInterval(function(){
+  var a=timer();
+  console.log(a);
+},1000);
+
   
   
