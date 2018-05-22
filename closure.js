@@ -1,5 +1,5 @@
 /**这里主要为闭包、变量对象、执行上下文*/
-// "use strict";
+"use strict";
 /**
 * 1.函数声明式为整体提升,函数表达式变量先提升,函数留在原地
 * 2.如果函数名与变量名一致，会忽略变量名(var a;);如果为同名函数，则会覆盖
@@ -159,7 +159,7 @@ var myObject={
   func:function(){
     var a=function(){
       var foo='3';
-      return this.foo;
+      return this;
     }();
     console.log(a);
     // (function(){
@@ -170,6 +170,16 @@ var myObject={
   }
 };
 myObject.func();
+
+var arr=[1,2,3,2,3,4,5,2,2];
+var arr1=[...new Set(arr)];
+console.log(arr1);
+
+function a(){
+  b=0; //不进入AO
+  console.log(b); //b is not defined
+};
+a();
 
 
 
