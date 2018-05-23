@@ -1,4 +1,4 @@
-// "use strict";
+"use strict";
 // function a(pageNum,pageSize,obj){
 //   console.log(arguments);
 //   console.log(pageNum,pageSize,obj); 
@@ -47,26 +47,24 @@
 // console.log(Person.xiaoming.run(Person.xiaoming.name));
 // console.log(Person.xiaoming.eat(Person.xiaoming.name));
 
-//立即执行函数
-var serial_maker=function(){
-  var prefix = '';
-  var seq = 0;
-  //直接向外抛出三个方法，供外部使用
-  return {
-    set_prefix: function (p) {
-      prefix = String(p);
-    },
-    set_seq: function (s) {
-      seq = s;
-    },
-    gensym: function ( ) {
-      var result = prefix + seq;
-      seq += 1;
-      return result;
-    }
-  };
-}();
-var seqer = serial_maker;
-seqer.set_prefix('Q');
-seqer.set_seq(1000);
-var unique = seqer.gensym(); // Q1000
+//filter可以过滤稀疏数组
+var arr=new Array(10);
+start:for(var i=0;i<arr.length;i++){
+  if(i>4){break start;}; //label语句
+  arr[i]=parseInt((Math.random()*100).toFixed(0));
+};
+var arr1=arr.filter(function(item,index,arr){
+  if(item){
+    return item;
+  }
+});
+console.log(arr1);
+
+var arrMap=['1','2'];
+var arrMay2=arrMap.map(function(item){
+  return item*2
+});
+console.log(arrMay2);
+
+
+
