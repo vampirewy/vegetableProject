@@ -65,6 +65,6 @@ var arrMay2=arrMap.map(function(item){
   return item*2
 });
 console.log(arrMay2);
-  
+   
     
 
