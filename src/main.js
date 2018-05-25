@@ -7,7 +7,6 @@ import 'mint-ui/lib/style.css'
 import common from './less/common.less'
 
 Vue.use(MintUi)
-//这是为什么?
 var vm=new Vue({
   el:'#app',
   router,
