@@ -2,10 +2,15 @@
   "name": "myApp",
   "version": "0.0.1",
   "description": "An Ionic project",
+  "scripts":{
+    "dev":"webpack-dev-server --open --inline --config webpack.config.js"
+  },
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-clean-css": "^3.7.0",
     "gulp-rename": "^1.2.0",
-    "gulp-sass": "^3.2.1"
+    "gulp-sass": "^3.2.1",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.9.1"
   }
 }
