@@ -19,7 +19,7 @@ module.exports={
     // publicPath:'./dist',
     port:2222,
     open:true,
-    hot:true,
+    // hot:true,
     host:'localhost',
     // host:'192.168.1.108',
     historyApiFallback:true,
