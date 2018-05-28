@@ -12,7 +12,7 @@ function routerConfig($stateProvider, $urlRouterProvider){
     views: {
       'tab-dash': {
         templateUrl: 'modules/tab-adash/tab-dash.html',
-        controller: require('../../modules/tab-adash/dashCtrl')
+        controller: 'DashCtrl'
       }
     }
   })
@@ -21,7 +21,7 @@ function routerConfig($stateProvider, $urlRouterProvider){
     views: {
       'tab-chats': {
         templateUrl: 'modules/tab-chats/tab-chats.html',
-        controller: require('../../modules/tab-chats/chatsCtrl')
+        controller: 'ChatsCtrl'
       }
     }
   })
@@ -30,7 +30,7 @@ function routerConfig($stateProvider, $urlRouterProvider){
     views: {
       'tab-chats': {
         templateUrl: 'modules/tab-chats/chat-detail/chat-detail.html',
-        controller: require('../../modules/tab-chats/chat-detail/chatDetailCtrl')
+        controller: 'ChatDetailCtrl'
       }
     }
   })
@@ -39,7 +39,7 @@ function routerConfig($stateProvider, $urlRouterProvider){
     views: {
       'tab-account': {
         templateUrl: 'modules/tab-account/tab-account.html',
-        controller: require('../../modules/tab-account/accountCtrl')
+        controller: 'AccountCtrl'
       }
     }
   });
