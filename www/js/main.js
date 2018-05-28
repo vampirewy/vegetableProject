@@ -12,6 +12,6 @@ angular.module('starter', ['ionic','starter.services','starter.controllers'])
 // .controller('DashCtrl', dashCtrl)
 // .controller('ChatsCtrl', chatsCtrl)
 // .controller('ChatDetailCtrl',chatsDetailCtrl)
-// .controller('AccountCtrl',accountCtrl);
+// .controller('AccountCtrl',accountCtrl)
 
 
