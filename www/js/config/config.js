@@ -1,6 +1,6 @@
 'use strict';
 module.exports=routerConfig;
-function routerConfig($stateProvider, $urlRouterProvider){
+function routerConfig($stateProvider, $urlRouterProvider,$controllerProvider){
   $stateProvider
   .state('tab', {
     url: '/tab',
