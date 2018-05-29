@@ -1,33 +1,28 @@
 module.exports=angular.module('account',[])
 .config(function($stateProvider){
-  function Load($q){
-    return{
-      html:function(params){
-        var deferred=$q.defer();
-        // require.ensure([params.template],function(require){
-        //   var template=require(params.template);
-        //   deferred.resolve(template);
-        // },params.name);
-        // return deferred.promise;
-        console.log(1);
-      }
-    }
+  function LoadHtml(params,deferred){
+    require.ensure([params.template],function(require){
+      var template=require(params.template);
+      deferred.resolve(template);
+    },params.name);
+    return deferred.promise;
   }
-  // var a=Load();
-  // console.log(a.b());
   $stateProvider.state('tab.account',{
     url:'/account',
     views:{
       'tab-account':{
+        templateProvider:function($q){
+          var deferred=$q.defer();
+          require.ensure(['./tab-account.html'],function(require){
+            var template=require('./tab-account.html');
+            deferred.resolve(template);
+          },'account-tpl');
+          return deferred.promise;
+        },
         // templateProvider:function($q){
         //   var deferred=$q.defer();
-        //   require.ensure(['./tab-account.html'],function(require){
-        //     var template=require('./tab-account.html');
-        //     deferred.resolve(template);
-        //   },'chats-tpl');
-        //   return deferred.promise;
+        //   LoadHtml({template:'./tab-account.html',name:'account-tpl'},deferred);
         // },
-        templateProvider:Load().html({template:'./tab-account.html',name:'chats-tpl'}),
         controller:'AccountCtrl',
         resolve:{
           'tab.account':function($q,$ocLazyLoad){
@@ -38,7 +33,7 @@ module.exports=angular.module('account',[])
                 name:'account'
               });
               deferred.resolve(mod.controller);
-            },'chats-ctl');
+            },'account-ctl');
             return deferred.promise;
           }
         }

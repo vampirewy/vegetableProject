@@ -43,17 +43,17 @@ module.exports=angular.module('services',[])
     }
   };
 })
-.factory('Load',function($q){
-  return {
-    html:function(params){
-      var deferred=$q.defer();
-      require.ensure([params.template],function(require){
-        var template=require(params.template);
-        deferred.resolve(template);
-      },params.name);
-      return deferred.promise;
-    }
-  }
-})
+// .factory('Load',function($q){
+//   return {
+//     html:function(params){
+//       var deferred=$q.defer();
+//       require.ensure([params.template],function(require){
+//         var template=require(params.template);
+//         deferred.resolve(template);
+//       },params.name);
+//       return deferred.promise;
+//     }
+//   }
+// })
 
 
