@@ -1,12 +1,13 @@
+'use strict';
 module.exports=angular.module('account',[])
 .config(function($stateProvider){
-  function LoadHtml(params,deferred){
-    require.ensure([params.template],function(require){
-      var template=require(params.template);
-      deferred.resolve(template);
-    },params.name);
-    return deferred.promise;
-  }
+  // function LoadHtml(a,deferred){
+  //   require.ensure([a],function(require){
+  //     var template=require(a);
+  //     deferred.resolve(template);
+  //   },params.name);
+  //   return deferred.promise;
+  // }
   $stateProvider.state('tab.account',{
     url:'/account',
     views:{
@@ -21,7 +22,7 @@ module.exports=angular.module('account',[])
         },
         // templateProvider:function($q){
         //   var deferred=$q.defer();
-        //   LoadHtml({template:'./tab-account.html',name:'account-tpl'},deferred);
+        //   LoadHtml(a,deferred);
         // },
         controller:'AccountCtrl',
         resolve:{
