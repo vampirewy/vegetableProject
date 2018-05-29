@@ -4,10 +4,19 @@ module.exports={
   entry:'./www/js/main.js',
   output:{
     path:path.resolve(__dirname,'dist'),
-    filename:'[name].js'
+    filename:'[name].js',
+    chunkFilename:'[name].chunk.[chunkhash].js'
   },
   resolve:{
     extensions:['.js','.json']
+  },
+  module:{
+    loaders:[
+      {
+        test: /\.html$/,
+        loader: 'raw-loader' //模板转成字符串
+      }
+    ]
   },
   devtool:'inline-source-map',
   //webpack-dev-server(自动刷新及热更新)

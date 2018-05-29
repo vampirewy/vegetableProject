@@ -1,4 +1,6 @@
 'use strict';
-module.exports=['$scope',function($scope){
-  console.log('这是首页');
-}];
+module.exports=angular.module('tab.dash')
+.controller('DashCtrl',function(){
+  // $scope.text='你好';
+  this.text='你好';
+})

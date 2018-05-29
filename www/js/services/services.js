@@ -1,4 +1,4 @@
-module.exports=angular.module('starter.services',[])
+module.exports=angular.module('services',[])
 .factory('Chats', function() {
   var chats = [{
     id: 0,
