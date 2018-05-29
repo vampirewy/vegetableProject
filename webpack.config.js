@@ -5,7 +5,7 @@ module.exports={
   output:{
     path:path.resolve(__dirname,'dist'),
     filename:'[name].js',
-    chunkFilename:'[name].chunk.[chunkhash].js'
+    chunkFilename:'[name].[chunkhash].js'
   },
   resolve:{
     extensions:['.js','.json']
