@@ -1,5 +1,5 @@
 module.exports=angular.module('services',[])
-.factory('Chats', function() {
+.factory('Chats', function($q) {
   var chats = [{
     id: 0,
     name: 'Ben Sparrow',
@@ -42,6 +42,18 @@ module.exports=angular.module('services',[])
       return null;
     }
   };
+})
+.factory('Load',function($q){
+  return {
+    html:function(params){
+      var deferred=$q.defer();
+      require.ensure([params.template],function(require){
+        var template=require(params.template);
+        deferred.resolve(template);
+      },params.name);
+      return deferred.promise;
+    }
+  }
 })
 
 

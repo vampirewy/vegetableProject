@@ -12,7 +12,7 @@ module.exports=angular.module('tab.chats',[])
           },'chats-tpl');
           return deferred.promise;
         },
-        controller:'DashCtrl',
+        controller:'ChatsCtrl',
         resolve:{
           'tab.chats':function($q,$ocLazyLoad){
             var deferred=$q.defer();
