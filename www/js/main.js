@@ -1,7 +1,7 @@
 'use strict';
 require('../js/services/services');
 require('./routers/router');
-angular.module('starter', ['ionic','services','starter.controllers',require('oclazyload')])
+angular.module('starter', ['ionic','services','starter.router',require('oclazyload')])
 .run(['$ionicPlatform',require('./run/run')])
 .config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRouterProvider){
   $stateProvider.state('tab', {

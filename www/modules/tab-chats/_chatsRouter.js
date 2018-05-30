@@ -1,4 +1,5 @@
-module.exports=angular.module('tab.chats',[])
+'use strict';
+module.exports=angular.module('chats',[])
 .config(function($stateProvider){
   $stateProvider.state('tab.chats',{
     url:'/chats',
@@ -7,8 +8,7 @@ module.exports=angular.module('tab.chats',[])
         templateProvider:function($q){
           var deferred=$q.defer();
           require.ensure(['./tab-chats.html'],function(require){
-            var template=require('./tab-chats.html');
-            deferred.resolve(template);
+            deferred.resolve(require('./tab-chats.html'));
           },'chats-tpl');
           return deferred.promise;
         },
@@ -17,11 +17,8 @@ module.exports=angular.module('tab.chats',[])
           'tab.chats':function($q,$ocLazyLoad){
             var deferred=$q.defer();
             require.ensure(['./chatsCtrl.js'],function(){
-              var mod=require('./chatsCtrl');
-              $ocLazyLoad.load({
-                name:'tab.chats'
-              });
-              deferred.resolve(mod.controller);
+              $ocLazyLoad.load({name:'chats'});
+              deferred.resolve(require('./chatsCtrl'));
             },'chats-ctl');
             return deferred.promise;
           }
