@@ -1,6 +1,6 @@
 'use strict';
 module.exports=angular.module('chats',[])
-.config(function($stateProvider){
+.config(['$stateProvider',function($stateProvider){
   $stateProvider.state('tab.chats',{
     url:'/chats',
     views:{
@@ -26,4 +26,4 @@ module.exports=angular.module('chats',[])
       }
     }
   })
-}).name
+}]).name

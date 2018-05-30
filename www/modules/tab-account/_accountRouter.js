@@ -1,6 +1,6 @@
 'use strict';
 module.exports=angular.module('account',[])
-.config(function($stateProvider){
+.config(['$stateProvider',function($stateProvider){
   $stateProvider.state('tab.account',{
     url:'/account',
     views:{
@@ -26,4 +26,4 @@ module.exports=angular.module('account',[])
       }
     }
   })
-}).name
+}]).name

@@ -1,30 +1,31 @@
+'use strict';
 module.exports=angular.module('services',[])
-.factory('Chats', function($q) {
+.factory('Chats', function() {
   var chats = [{
     id: 0,
     name: 'Ben Sparrow',
     lastText: 'You on your way?',
-    face: 'img/ben.png'
+    face: require('../../img/ben.png')
   }, {
     id: 1,
     name: 'Max Lynx',
     lastText: 'Hey, it\'s me',
-    face: 'img/max.png'
+    face: require('../../img/max.png')
   }, {
     id: 2,
     name: 'Adam Bradleyson',
     lastText: 'I should buy a boat',
-    face: 'img/adam.jpg'
+    face: require('../../img/adam.jpg')
   }, {
     id: 3,
     name: 'Perry Governor',
     lastText: 'Look at my mukluks!',
-    face: 'img/perry.png'
+    face: require('../../img/perry.png')
   }, {
     id: 4,
     name: 'Mike Harrington',
     lastText: 'This is wicked good ice cream.',
-    face: 'img/mike.png'
+    face: require('../../img/mike.png')
   }];
   return {
     all: function() {
@@ -43,17 +44,6 @@ module.exports=angular.module('services',[])
     }
   };
 })
-// .factory('Load',function($q){
-//   return {
-//     html:function(params){
-//       var deferred=$q.defer();
-//       require.ensure([params.template],function(require){
-//         var template=require(params.template);
-//         deferred.resolve(template);
-//       },params.name);
-//       return deferred.promise;
-//     }
-//   }
-// })
+
 
 

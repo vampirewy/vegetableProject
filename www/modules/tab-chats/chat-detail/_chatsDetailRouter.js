@@ -1,6 +1,6 @@
 'use strict';
 module.exports=angular.module('chat-detail',[])
-.config(function($stateProvider){
+.config(['$stateProvider',function($stateProvider){
   $stateProvider.state('chatDetail',{
     url:'/chats/:chatId',
     templateProvider:function($q){
@@ -22,4 +22,4 @@ module.exports=angular.module('chat-detail',[])
       }
     }
   })
-}).name
+}]).name
