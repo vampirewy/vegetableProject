@@ -3,6 +3,8 @@ const path=require('path');
 //因为webpack版本已更新到4.xxx,所以这个插件也要更新到最新的 npm i extract-text-webpack-plugin@next即可
 const ExtractTextPlugin=require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin=require('html-webpack-plugin');
+const UglifyjsWebpackPlugin=require('uglifyjs-webpack-plugin');
+const CleanWebpackPlugin=require('clean-webpack-plugin');
 module.exports={
   // entry:'./www/js/main.js',
   entry:{
@@ -68,7 +70,9 @@ module.exports={
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       template:'./www/index.html'
-    })
+    }),
+    new UglifyjsWebpackPlugin(),
+    new CleanWebpackPlugin(['dist'])
     //别使用，样式会出问题
     //只加载用到的class样式
     // new PurifyCSSPlugin({
@@ -79,7 +83,7 @@ module.exports={
   //webpack-dev-server(自动刷新及热更新)
   devServer:{
     //在端口号为222建立本地服务,
-    contentBase:path.resolve(__dirname,'dist'),
+    // contentBase:path.resolve(__dirname,'dist'),
     /**首先devServer的publicPath路径是指向内存生产的路径，不在物理硬盘上，所以我的index.html里面引用的js路径，应该相对于publicPath地址。
     注意：publicPath地址默认不写会读取output的publicPath路径，publicPath总是以‘/’开头。**/
     // publicPath:'./dist',
