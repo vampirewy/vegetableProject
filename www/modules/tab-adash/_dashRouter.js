@@ -13,7 +13,7 @@ module.exports=angular.module('dash',[])
           }, 'dash-tpl');
           return deferred.promise;
         },
-        controller:'DashCtrl as vm',
+        controller:'DashCtrl',
         resolve: {
           'tab.dash': function($q, $ocLazyLoad) {
             var deferred = $q.defer();
