@@ -1,6 +1,6 @@
 'use strict';
 module.exports=angular.module('services',[])
-.factory('Chats', function() {
+.factory('Chats',function() {
   var chats = [{
     id: 0,
     name: 'Ben Sparrow',

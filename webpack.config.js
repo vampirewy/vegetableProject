@@ -3,10 +3,13 @@ const path=require('path');
 //因为webpack版本已更新到4.xxx,所以这个插件也要更新到最新的 npm i extract-text-webpack-plugin@next即可
 const ExtractTextPlugin=require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin=require('html-webpack-plugin');
+// const UglifyjsPlugin=require('uglifyjs-webpack-plugin');
+const UglifyPlugin=require('webpack-parallel-uglify-plugin');
+const CleanPlugin=require('clean-webpack-plugin');
 module.exports={
   // entry:'./www/js/main.js',
   entry:{
-    vendor:'./www/lib/ionic/js/ionic.bundle.min.js',
+    // vendor:'./www/lib/ionic/js/ionic.bundle.min.js',
     app:'./www/js/main.js'
   },
   output:{
@@ -26,16 +29,23 @@ module.exports={
       },
       {
         test:/\.css$/,
-        use:ExtractTextPlugin.extract({
-          fallback:'style-loader',
-          use:['css-loader']
-        })
+        use:ExtractTextPlugin.extract(['style-loader','css-loader'])
       },
       {
         test:/\.less$/,
         use:ExtractTextPlugin.extract({
           fallback:'style-loader',
-          use:['css-loader','less-loader']
+          use:[
+            {
+            loader:'css-loader',
+            options:{
+              minimize: true
+            }
+          },
+          {
+            loader:'less-loader'
+          }
+        ]
         })
       },
       {
@@ -55,7 +65,7 @@ module.exports={
         test:/\.(png|jpe?g|gif|jpg)(\?.*)?$/,
         loader:'url-loader',
         options:{
-          limit:1000,
+          limit:10000,
           name:'img/[name].[ext].[hash:8]'
         }
       }
@@ -67,27 +77,34 @@ module.exports={
     }),
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
-      template:'./www/index.html'
-    })
-    //别使用，样式会出问题
-    //只加载用到的class样式
-    // new PurifyCSSPlugin({
-    //   paths:glob.sync(path.join(__dirname,'./www/*.html'))
-    // })
+      template:'./www/index.html',
+      minify:{
+        collapseWhitespace:true, //删除空白行和换行
+        removeComments:true, //去除注释
+        minifyJS:true //去除注释的script标签
+      },
+      hash:true //在script和link里注入hash值，主要为清除缓存
+    }),
+    // new UglifyPlugin({
+    //   uglifyJS:{
+    //     output: {
+    //       comments: false
+    //     },
+    //     compress: {
+    //       warnings: false
+    //     }
+    //   }
+    // }),
+    new CleanPlugin(['dist'])
   ],
-  devtool:'inline-source-map',
-  //webpack-dev-server(自动刷新及热更新)
+  // devtool:'inline-source-map',
   devServer:{
-    //在端口号为222建立本地服务,
     contentBase:path.resolve(__dirname,'dist'),
-    /**首先devServer的publicPath路径是指向内存生产的路径，不在物理硬盘上，所以我的index.html里面引用的js路径，应该相对于publicPath地址。
-    注意：publicPath地址默认不写会读取output的publicPath路径，publicPath总是以‘/’开头。**/
     // publicPath:'./dist',
     port:2222,
     open:true,
     hot:true,
     host:'localhost',
-    // host:'192.168.1.108',
     historyApiFallback:true,
     inline:true,
     // progress:true,
