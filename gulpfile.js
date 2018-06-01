@@ -1,22 +1,12 @@
 const gulp=require('gulp');
-const LoadPlugins=require('gulp-load-plugins')();
-const Open=require('open');
-gulp.task('js',function(){
-  gulp.src('./*.js')
-  .pipe(LoadPlugins.connect.reload())
-});
-gulp.task('html',function(){
-  gulp.src('./index.html')
-  .pipe(LoadPlugins.connect.reload())
-});
+const $=require('gulp-load-plugins')();
+const open=require('open');
 gulp.task('serve',function(){
-  LoadPlugins.connect.server({
-    root:'./',
-    livereload:true,
-    port:1111
-  });
-  Open('http://localhost:1111');
-  gulp.watch('./*.js',['js'])
-  gulp.watch('./index.html',['html'])
-});
-gulp.task('default',['serve']);
+  $.connect.server({
+    root: './dist/',
+    livereload: true,
+    port: 3333
+ })
+ open('http://localhost:3333');
+})
+gulp.task('default', ['serve'])
