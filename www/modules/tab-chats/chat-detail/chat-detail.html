@@ -1,0 +1,14 @@
+<ion-view hide-nav-bar="true">
+  <ion-header-bar>
+    <div class="buttons" nav-direction="back" ui-sref="tab.chats">
+      <span class="button  ion-chevron-left">Chats</span>
+    </div>
+    <div class="title">{{chat.name}}</div>
+  </ion-header-bar>
+  <ion-content class="padding">
+    <img ng-src="{{chat.face}}" style="width: 64px; height: 64px">
+    <p>
+      {{chat.lastText}}
+    </p>
+  </ion-content>
+</ion-view>
