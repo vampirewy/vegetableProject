@@ -8,15 +8,17 @@
 // };
 // console.log(a(5));
 
-function factorial (n) {
-  return !(n > 1) ? 1 : factorial(n - 1) * n;
+function factorial(n) {
+    return !(n > 1) ? 1 : factorial(n - 1) * n;
 }
-var aray=[1,2,3,4,5].map(factorial);
+var aray = [1, 2, 3, 4, 5].map(factorial);
 console.log(aray);
 var global = this;
 
 var sillyFunction = function (recursed) {
-    if (!recursed) {  return arguments.callee(true); }
+    if (!recursed) {
+        return arguments.callee(true);
+    }
     if (this !== global) {
         alert("This is: " + this);
     } else {
@@ -25,3 +27,4 @@ var sillyFunction = function (recursed) {
 }
 
 sillyFunction();
+
