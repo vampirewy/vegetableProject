@@ -29,24 +29,33 @@
 
 // sillyFunction();
 /**函数a被重新赋值 */
-function a() {
-    console.log(1111)
-};
+// function a() {
+//     console.log(1111)
+// };
 
-a = function () {
-    console.log(2222222)
-};
+// a = function () {
+//     console.log(2222222)
+// };
 
-var color = 'red';
-var a = {
-    color: 'blue'
-};
+// var color = 'red';
+// var a = {
+//     color: 'blue'
+// };
 
-function b() {
-    console.log(this.color);
-};
-console.log(b.bind(this)()); //red
-console.log(b.bind(a)()); //blue
-var test='cat, bat,sat,fat';
-var result=test.replace(/(.at)/g,"word ($1)");
-console.log(result);
+// function b() {
+//     console.log(this.color);
+// };
+// console.log(b.bind(this)()); //red
+// console.log(b.bind(a)()); //blue
+// var test='cat, bat,sat,fat';
+// var result=test.replace(/(.at)/g,"word ($1)");
+// console.log(result);
+
+function a(source,totalLevel){
+    // var level;
+    return function(){
+        return totalLevel-(Math.floor(source/totalLevel));
+    };
+}
+var result=a(100,10);
+console.log(result());
