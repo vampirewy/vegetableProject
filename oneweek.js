@@ -32,11 +32,11 @@ this.a = 20;
 var test = {
   a: 40,
   init: () => {
-    console.log(this.a); //20
+    // console.log(this.a); //20
 
     function go() {
       this.a = 60;
-      console.log(this.a); //60 一直是全局的window,a被重新赋值
+      // console.log(this.a); //60 一直是全局的window,a被重新赋值
     }
     go.prototype.a = 50;
     return go;
@@ -44,8 +44,8 @@ var test = {
 };
 // var p = test.init(); //function go(){........}
 // p();
-new (test.init())()  //60  go函数为这个实例的构造函数
-  
+new (test.init())(); //60  go函数为这个实例的构造函数
+
 var teamLists = [
   {
     number: "1",
@@ -251,7 +251,8 @@ function result(teamLists) {
     teamLists[p].gameNum = "";
     if (teamLists[p].gameLists && teamLists[p].gameLists.length) {
       for (var i in teamLists[p].gameLists) {
-        teamLists[p].gameLists[i].active && (teamLists[p].gameNum += teamLists[p].gameLists[i].name);
+        teamLists[p].gameLists[i].active &&
+          (teamLists[p].gameNum += teamLists[p].gameLists[i].name);
       }
     } else {
       teamLists[p].gameNum = "~";
@@ -261,6 +262,61 @@ function result(teamLists) {
   return a;
 }
 var betResult = result(teamLists);
-console.log(betResult);
+// console.log(betResult);
 
+/**请在下面写出JavaScript面向对象编程的混合式继承。并写出ES6版本的继承。
+要求：汽车是父类，Cruze是子类。父类有颜色、价格属性，有售卖的方法。Cruze子
+类实现父类颜色是红色，价格是140000,售卖方法实现输出如下语句：将 红色的Cruze
+买给了小王价格是14万。*/
 
+/**父类 */
+function Car(color, name, money) {
+  this.color = color;
+  this.money = money;
+  this.name = name;
+}
+Car.prototype.sale = function() {
+  console.log(`${this.color}色的车卖给了${this.name}价格是${this.money}`);
+};
+/**子类 */
+function Cruze(color, name, money) {
+  // Car.call(this, color,name);
+  // Car.apply(this,arguments);
+  Car.apply(this, [color, name, money]);
+}
+//1.拿到父类原型链上的方法
+//2.不能让构造函数执行两次
+//3.引用的原型链不能是按址引用
+//4.修正子类的constructor
+var __pro = Object.create(Car.prototype);
+__pro.constructor = Cruze;
+Cruze.prototype = __pro;
+var cruze = new Cruze("red", "小王", "140000");
+console.log(cruze);
+console.log(cruze.sale());
+
+function Person(sex,height){
+  this.sex=sex;
+  this.height=height;
+};
+Person.prototype.color=function(color){
+  return color;
+};
+Person.prototype.tall=function(){
+  return `这人${this.height}高`;
+}
+// var person=new Person('男','180');
+// console.log(person);
+// console.log(person.color('yellow'));
+// console.log(person.tall());
+function Boy(sex,height){
+  Person.call(this,sex,height);
+};
+var __proto=Object.create(Person.prototype); //创建原型副本,防止子类增加方法，父类也增加方法
+Boy.prototype=__proto; //原型指向副本，防止子类增加方法，父类也增加方法
+__proto.constructor=Boy; //修正构造函数
+Boy.prototype.test=function(){return 2222};
+var boy=new Boy('男','190');
+console.log(boy.tall());
+console.log(boy.sex);
+console.log(boy);
