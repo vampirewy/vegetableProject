@@ -33,7 +33,6 @@ var test = {
   a: 40,
   init: () => {
     // console.log(this.a); //20
-
     function go() {
       this.a = 60;
       // console.log(this.a); //60 一直是全局的window,a被重新赋值
@@ -65,8 +64,8 @@ function Cruze(name, color, price) {
   this.name = name;
   Car.call(this, color, price);
 };
-var pro = Object.create(Car.prototype); //pro.__proto__ === Car.prototype 创建的是变量pro的原型
-Cruze.prototype = pro;
+Cruze.prototype = Object.create(Car.prototype); //Cruze.prototype.__proto__ === Car.prototype 创建的是变量pro的原型
+Cruze.prototype.sayHello = function () {};
 Cruze.prototype.constructor = Cruze; //修正构造函数，可以使用属性
 var cruze = new Cruze('小王', '红色', 140000);
 cruze.sale();
@@ -95,9 +94,9 @@ for (var i = 0; i < 3; i++) {
     tmp; //tmp未定义
   if (i !== 2) {
     tmp = [];
-    pusher.children = tmp;   //pusher = { children:[],value:'item'+i};
+    pusher.children = tmp; //pusher = { children:[],value:'item'+i};
   }
   arr.push(pusher); // arr=s=[{children:[],value:'item0'}]
-  arr = tmp;  //arr === children:[];arr!=s 
+  arr = tmp; //arr === children:[];arr!=s 
 };
 console.log(s[0]);
