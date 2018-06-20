@@ -208,133 +208,80 @@ var arr = [
     name: "3",
     odds: "胜3.9",
     active: true
+  }],
+  [{
+    name: "3",
+    odds: "胜3.9",
+    active: true
+  }],
+  [{
+    name: "3",
+    odds: "胜3.9",
+    active: true
+  }],
+  [{
+    name: "3",
+    odds: "胜3.9",
+    active: true
+  }],
+  [{
+    name: "3",
+    odds: "胜3.9",
+    active: true
+  }],
+  [{
+    name: "3",
+    odds: "胜3.9",
+    active: true
+  }],
+  [{
+    name: "3",
+    odds: "胜3.9",
+    active: true
+  }],
+  [{
+    name: "3",
+    odds: "胜3.9",
+    active: true
+  }],
+  [{
+    name: "3",
+    odds: "胜3.9",
+    active: true
+  }],
+  [{
+    name: "3",
+    odds: "胜3.9",
+    active: true
+  }],
+  [{
+    name: "3",
+    odds: "胜3.9",
+    active: true
+  }],
+  [{
+    name: "3",
+    odds: "胜3.9",
+    active: true
   }, {
     name: "3",
     odds: "胜3.9",
     active: true
-  }],
-  [{
-    name: "3",
-    odds: "胜3.9",
-    active: true
-  },{
-    name: "3",
-    odds: "胜3.9",
-    active: true
-  }],
-  [{
-    name: "3",
-    odds: "胜3.9",
-    active: true
-  },{
-    name: "3",
-    odds: "胜3.9",
-    active: true
-  }],
-  [{
-    name: "3",
-    odds: "胜3.9",
-    active: true
-  },{
-    name: "3",
-    odds: "胜3.9",
-    active: true
-  }],
-  [{
-    name: "3",
-    odds: "胜3.9",
-    active: true
-  },{
-    name: "3",
-    odds: "胜3.9",
-    active: true
-  }],
-  [{
-    name: "3",
-    odds: "胜3.9",
-    active: true
-  },{
-    name: "3",
-    odds: "胜3.9",
-    active: true
-  }],
-  [{
-    name: "3",
-    odds: "胜3.9",
-    active: true
-  },{
-    name: "3",
-    odds: "胜3.9",
-    active: true
-  }],
-  [{
-    name: "3",
-    odds: "胜3.9",
-    active: true
-  },{
-    name: "3",
-    odds: "胜3.9",
-    active: true
-  }],
-  [{
-    name: "3",
-    odds: "胜3.9",
-    active: true
-  },{
-    name: "3",
-    odds: "胜3.9",
-    active: true
-  }],
-  [{
-    name: "3",
-    odds: "胜3.9",
-    active: true
-  },{
-    name: "3",
-    odds: "胜3.9",
-    active: true
-  }],
-  [{
-    name: "3",
-    odds: "胜3.9",
-    active: true
-  },{
-    name: "3",
-    odds: "胜3.9",
-    active: true
-  }],
-  [{
-    name: "3",
-    odds: "胜3.9",
-    active: true
-  },{
-    name: "3",
-    odds: "胜3.9",
-    active: true
-  }],
-  [{
-    name: "3",
-    odds: "胜3.9",
-    active: true
-  },{
-    name: "3",
-    odds: "胜3.9",
-    active: true
-  }],
-  [{
-    name: "3",
-    odds: "胜3.9",
-    active: true
-  },{
-    name: "3",
-    odds: "胜3.9",
-    active: true
   }]
+  // [{
+  //   name: "3",
+  //   odds: "胜3.9",
+  //   active: true
+  // }]
+  // [{
+  //   name: "3",
+  //   odds: "胜3.9",
+  //   active: true
+  // }]
 ];
-
-function sortB(list) { 
+/**带胆的是先去除* */
+function sortB(list) {
   console.log(list);
-  var start=new Date().getTime();
   var r = [];
   var l = [];
   for (var i = 0; i < list.length; i++) {
@@ -352,9 +299,6 @@ function sortB(list) {
     (r[a].length === 9) && l.push(r[a]);
   };
   console.log(l);
-  var end=new Date().getTime();
-  var over=end-start;
-  console.log(over/1000);
   return l;
 };
 sortB(arr);
