@@ -48,7 +48,7 @@
 // let {x,y=3}={x:1};
 // console.log(y);
 let arr = [{
-    name: '王',
+    name: '10',
     size: '50'
   }, //0
   {
@@ -56,24 +56,75 @@ let arr = [{
     size: '65'
   }, //1
   {
-    name: '刘',
-    size: '70'
+    name: '60',
+    size: '50'
   }, //2
   {
     name: '张',
-    size: '45'
+    size: '50'
   }, //3
 ];
-
-
-arr.sort(function (a, b) {
-  if (a.size < b.size) {
-    return 1
-  } else if (a.size > b.size) {
-    return -1
+let arr1 = [];
+let arr2 = [];
+// for (let i = 0; i < arr.length; i++) {
+//   if (i % 2 == 0) {
+//     // arr[i].infor = '';
+//     arr[i].infor = arr[i + 1];
+//     arr1.push(arr[i]);
+//   };
+// };
+// arr.map((el, index) => {
+//   if (index % 2 == 0) {
+//     arr[index].infor = arr[index + 1];
+//   };
+//   delete arr[index + 1];
+// });
+// arr1 = arr.filter((el, index) => {
+//   return el;
+// });
+function start(arr) {
+  if (arr instanceof Array) {
+    arr.map((el, index) => {
+      index % 2 == 0 && (arr[index].infor = arr[index + 1]);
+    });
+    sort(arr);
   } else {
-    return 0
+    console.log(new Error('必须是数组'))
   }
-});
+};
+start(arr);
 
-console.log(arr);
+function sort(arr) {
+  arr.sort((a, b) => {
+    if (a.size < b.size) {
+      return 1;
+    } else if (a.size > b.size) {
+      return -1;
+    } else {
+      if (a.name < b.name) {
+        return 1;
+      } else if (a.name > b.name) {
+        return -1;
+      } else {
+        return 0;
+      };
+    };
+  });
+  reset(arr);
+};
+
+function reset(arr) {
+  let arr1 = [];
+  arr.forEach((el, index) => {
+    el.infor && arr1.push(el);
+  });
+  console.log(arr1);
+};
+
+// for (let end = 0; end < arr1.length; end++) {
+//   arr2.push(arr1[end], arr1[end].infor);
+//   arr2.forEach(value => {
+//     delete value.infor;
+//   });
+// };
+// console.log(arr2);
