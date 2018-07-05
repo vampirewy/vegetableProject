@@ -69,9 +69,9 @@ let arr = [
     size: "60"
   }, //4
   {
-    name:'孙',
-    size:'80'
-  }//5
+    name: "孙",
+    size: "80"
+  } //5
 ];
 start(arr);
 function start(arr) {
@@ -94,16 +94,15 @@ function sort(item) {
       return b.size - a.size;
     }
   });
-  item.forEach((el1, index1) => {
-    arr.forEach((el, index) => {
-      el1.name == el.name && arr2.push(el1, arr[index + 1]);
+  item.forEach((newEl, newIndex) => {
+    arr.forEach((oldEl, oleIndex) => {
+      newEl.name == oldEl.name && arr2.push(newEl, arr[oleIndex + 1]);
     });
   });
-  arr2=arr2.filter((el, index) => {
+  arr2 = arr2.filter((el, index) => {
     if (el) {
       return el;
     }
   });
   console.log(arr2);
 }
-
