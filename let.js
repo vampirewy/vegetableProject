@@ -88,15 +88,11 @@ function start(arr) {
 function sort(item) {
   let arr2 = [];
   item.sort((a, b) => {
-    if (b.size == a.size) {
-      return b.name - a.name;
-    } else {
-      return b.size - a.size;
-    }
+    return b.size == a.size ? b.name - a.name : b.size - a.size;
   });
   item.forEach((newEl, newIndex) => {
-    arr.forEach((oldEl, oleIndex) => {
-      newEl.name == oldEl.name && arr2.push(newEl, arr[oleIndex + 1]);
+    arr.forEach((oldEl, oldIndex) => {
+      newEl.name == oldEl.name && arr2.push(newEl, arr[oldIndex + 1]);
     });
   });
   arr2 = arr2.filter((el, index) => {
