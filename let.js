@@ -101,21 +101,214 @@
 
 // let obj={name:'程序',age:{a:1}};
 // let copy=Object.assign({},obj);
-let obj1={name:'111',b:[1,2]};
-let copy1=Object.assign({},obj1);
-obj1.b[0]=4;
-// copy1.method();
-// copy.age.a=3;
-// copy.name='程序1';
-// console.log(obj.age.a===copy.age.a);
-// console.log(copy);
-console.log(copy1.b);
-console.log(obj1.b);
-console.log(copy1.b===obj1.b);
+// let obj1={name:'111',b:[1,2]};
+// let copy1=Object.assign({},obj1);
+// obj1.b[0]=4;
+// // copy1.method();
+// // copy.age.a=3;
+// // copy.name='程序1';
+// // console.log(obj.age.a===copy.age.a);
+// // console.log(copy);
+// console.log(copy1.b);
+// console.log(obj1.b);
+// console.log(copy1.b===obj1.b);
 
-let arr=[{a:1,b:2,c:3}];
-let arr1=Object.assign([],arr);
-arr.push({d:4});
-console.log(arr1===arr);
+// let arr=[{a:1,b:2,c:3}];
+// let arr1=Object.assign([],arr);
+// arr.push({d:4});
+// console.log(arr1===arr);
 
 
+async function print(value, ms) {
+  await new Promise(resolve => {
+    setTimeout(resolve, ms);
+  });
+  console.log(value);
+};
+print('hello world', 50);
+
+outData = [{
+    data: ["100383", "Enterprise Data Governance and Management (EDGM)", "Enterprise Data Governance and Management (EDGM)", "EDGM Program Management Oversight", "Management Oversight", "Yes"],
+    visibal: true,
+    isNested: false,
+    isActive: true
+  },
+  {
+    data: [{
+        setOfData: {
+          label_name: "Functional Area",
+          field_name: "FUNCTIONAL_AREA_1",
+          field_value: "Enterprise Data Governance and Management (EDGM)",
+          service_status: "ACTIVE"
+        },
+        stateData: {
+          a: 1,
+          b: 2
+        }
+      },
+      {
+        setOfData: {
+          label_name: "Service Level 1",
+          field_name: "LEVEL_1_1",
+          field_value: "Enterprise Data Governance and Management (EDGM)",
+          service_status: "ACTIVE"
+        },
+        stateData: {
+          a: 1,
+          b: 2
+        }
+      },
+      {
+        setOfData: {
+          label_name: "Service Level 2",
+          field_name: "LEVEL_2_1",
+          field_value: "EDGM Program Management Oversight",
+          service_status: "ACTIVE"
+        },
+        stateData: {
+          a: 1,
+          b: 2
+        }
+      },
+      {
+        setOfData: {
+          label_name: "Service Level 3",
+          field_name: "LEVEL_3_1",
+          field_value: "Management Oversight",
+          service_status: "ACTIVE"
+        },
+        stateData: {
+          a: 1,
+          b: 2
+        }
+      },
+      {
+        setOfData: {
+          label_name: "Service ID",
+          field_name: "SERVICE_ID_1",
+          field_value: "100383",
+        },
+        stateData: {
+          a: 1,
+          b: 2
+        }
+      },
+      {
+        setOfData: {
+          label_name: "Cost Centers",
+          field_name: "COST_CENTERS_1",
+          field_value: "7001406;7001406 EDGM;State Street Bank and Trust Company;Y",
+        },
+        stateData: {
+          a: 1,
+          b: 2
+        }
+      },
+      {
+        setOfData: {
+          label_name: "Critical Service",
+          field_name: "SVC_CRITICAL_SERVICE_1",
+          field_value: "Yes",
+        },
+        stateData: {
+          a: 1,
+          b: 2
+        }
+      }
+    ],
+    visible: false,
+    isNested: true
+  },
+  {
+    data: ["100356", "Enterprise Data Governance and Management (EDGM)", "Enterprise Data Governance and Management (EDGM)", "EDGM Program Management Oversight", "Management Oversight", "Yes"],
+    visibal: true,
+    isNested: false,
+    isActive: true
+  },
+  {
+    data: [{
+        setOfData: {
+          label_name: "Functional Area",
+          field_name: "FUNCTIONAL_AREA_2",
+          field_value: "Enterprise Data Governance and Management (EDGM)",
+          service_status: "ACTIVE"
+        },
+        stateData: {
+          a: 1,
+          b: 2
+        }
+      },
+      {
+        setOfData: {
+          label_name: "Service Level 1",
+          field_name: "LEVEL_1_2",
+          field_value: "Enterprise Data Governance and Management (EDGM)",
+          service_status: "ACTIVE"
+        },
+        stateData: {
+          a: 1,
+          b: 2
+        }
+      },
+      {
+        setOfData: {
+          label_name: "Service Level 2",
+          field_name: "LEVEL_2_2",
+          field_value: "EDGM Program Management Oversight",
+          service_status: "ACTIVE"
+        },
+        stateData: {
+          a: 1,
+          b: 2
+        }
+      },
+      {
+        setOfData: {
+          label_name: "Service Level 3",
+          field_name: "LEVEL_3_2",
+          field_value: "Management Oversight",
+          service_status: "ACTIVE"
+        },
+        stateData: {
+          a: 1,
+          b: 2
+        }
+      },
+      {
+        setOfData: {
+          label_name: "Service ID",
+          field_name: "SERVICE_ID_2",
+          field_value: "100356",
+        },
+        stateData: {
+          a: 1,
+          b: 2
+        }
+      },
+      {
+        setOfData: {
+          label_name: "Cost Centers",
+          field_name: "COST_CENTERS_2",
+          field_value: "7001406;7001406 EDGM;State Street Bank and Trust Company;Y",
+        },
+        stateData: {
+          a: 1,
+          b: 2
+        }
+      },
+      {
+        setOfData: {
+          label_name: "Critical Service",
+          field_name: "SVC_CRITICAL_SERVICE_3",
+          field_value: "Yes",
+        },
+        stateData: {
+          a: 1,
+          b: 2
+        }
+      }
+    ],
+    visible: false,
+    isNested: true
+  }
+];
