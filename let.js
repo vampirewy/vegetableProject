@@ -47,57 +47,60 @@
 
 // let {x,y=3}={x:1};
 // console.log(y);
-// let arr = [
-//   {
-//     name: "10",
-//     size: "50"
-//   }, //0
-//   {
-//     name: "李",
-//     size: "65"
-//   }, //1
-//   {
-//     name: "60",
-//     size: "50"
-//   }, //2
-//   {
-//     name: "张",
-//     size: "50"
-//   }, //3
-//   {
-//     name: "王",
-//     size: "60"
-//   }, //4
-//   {
-//     name: "孙",
-//     size: "80"
-//   } //5
-// ];
-// start(arr);
-// function start(arr) {
-//   if (arr instanceof Array) {
-//     let arr1 = [];
-//     arr.forEach((el, index) => {
-//       index % 2 == 0 && arr1.push(el);
-//     });
-//     sort(arr1);
-//   } else {
-//     throw new Error("必须是数组");
-//   }
-// }
-// function sort(item) {
-//   let arr2 = [];
-//   item.sort((a, b) => {
-//     return b.size == a.size ? b.name - a.name : b.size - a.size;
-//   });
-//   item.forEach((newEl, newIndex) => {
-//     arr.forEach((oldEl, oldIndex) => {
-//       newEl.name == oldEl.name && arr2.push(newEl, arr[oldIndex + 1]);
-//     });
-//   });
-//   arr2 = arr2.filter(el => el);
-//   console.log(arr2);
-// }
+let arr = [{
+    name: "10",
+    size: "50"
+  }, //0
+  {
+    name: "李",
+    size: "65"
+  }, //1
+  {
+    name: "60",
+    size: "50"
+  }, //2
+  {
+    name: "张",
+    size: "50"
+  }, //3
+  {
+    name: "王",
+    size: "60"
+  }, //4
+  {
+    name: "孙",
+    size: "80"
+  } //5
+];
+arr = start(arr);
+console.log(arr);
+
+function start(arr) {
+  if (arr instanceof Array) {
+    let arr1 = [];
+    arr.forEach((el, index) => {
+      index % 2 == 0 && arr1.push(el);
+    });
+    return sort(arr1);
+  } else {
+    throw new Error("必须是数组");
+  }
+}
+
+function sort(item) {
+  let arr2 = [];
+  item.sort((a, b) => {
+    return b.size == a.size ? b.name - a.name : b.size - a.size;
+  });
+  item.forEach((newEl, newIndex) => {
+    arr.forEach((oldEl, oldIndex) => {
+      newEl.name == oldEl.name && arr2.push(newEl, arr[oldIndex + 1]);
+    });
+  });
+  arr2 = arr2.filter(el => el);
+  return arr2;
+}
+
 
 // let obj={name:'程序',age:{a:1}};
 // let copy=Object.assign({},obj);
@@ -119,196 +122,10 @@
 // console.log(arr1===arr);
 
 
-async function print(value, ms) {
-  await new Promise(resolve => {
-    setTimeout(resolve, ms);
-  });
-  console.log(value);
-};
-print('hello world', 50);
-
-outData = [{
-    data: ["100383", "Enterprise Data Governance and Management (EDGM)", "Enterprise Data Governance and Management (EDGM)", "EDGM Program Management Oversight", "Management Oversight", "Yes"],
-    visibal: true,
-    isNested: false,
-    isActive: true
-  },
-  {
-    data: [{
-        setOfData: {
-          label_name: "Functional Area",
-          field_name: "FUNCTIONAL_AREA_1",
-          field_value: "Enterprise Data Governance and Management (EDGM)",
-          service_status: "ACTIVE"
-        },
-        stateData: {
-          a: 1,
-          b: 2
-        }
-      },
-      {
-        setOfData: {
-          label_name: "Service Level 1",
-          field_name: "LEVEL_1_1",
-          field_value: "Enterprise Data Governance and Management (EDGM)",
-          service_status: "ACTIVE"
-        },
-        stateData: {
-          a: 1,
-          b: 2
-        }
-      },
-      {
-        setOfData: {
-          label_name: "Service Level 2",
-          field_name: "LEVEL_2_1",
-          field_value: "EDGM Program Management Oversight",
-          service_status: "ACTIVE"
-        },
-        stateData: {
-          a: 1,
-          b: 2
-        }
-      },
-      {
-        setOfData: {
-          label_name: "Service Level 3",
-          field_name: "LEVEL_3_1",
-          field_value: "Management Oversight",
-          service_status: "ACTIVE"
-        },
-        stateData: {
-          a: 1,
-          b: 2
-        }
-      },
-      {
-        setOfData: {
-          label_name: "Service ID",
-          field_name: "SERVICE_ID_1",
-          field_value: "100383",
-        },
-        stateData: {
-          a: 1,
-          b: 2
-        }
-      },
-      {
-        setOfData: {
-          label_name: "Cost Centers",
-          field_name: "COST_CENTERS_1",
-          field_value: "7001406;7001406 EDGM;State Street Bank and Trust Company;Y",
-        },
-        stateData: {
-          a: 1,
-          b: 2
-        }
-      },
-      {
-        setOfData: {
-          label_name: "Critical Service",
-          field_name: "SVC_CRITICAL_SERVICE_1",
-          field_value: "Yes",
-        },
-        stateData: {
-          a: 1,
-          b: 2
-        }
-      }
-    ],
-    visible: false,
-    isNested: true
-  },
-  {
-    data: ["100356", "Enterprise Data Governance and Management (EDGM)", "Enterprise Data Governance and Management (EDGM)", "EDGM Program Management Oversight", "Management Oversight", "Yes"],
-    visibal: true,
-    isNested: false,
-    isActive: true
-  },
-  {
-    data: [{
-        setOfData: {
-          label_name: "Functional Area",
-          field_name: "FUNCTIONAL_AREA_2",
-          field_value: "Enterprise Data Governance and Management (EDGM)",
-          service_status: "ACTIVE"
-        },
-        stateData: {
-          a: 1,
-          b: 2
-        }
-      },
-      {
-        setOfData: {
-          label_name: "Service Level 1",
-          field_name: "LEVEL_1_2",
-          field_value: "Enterprise Data Governance and Management (EDGM)",
-          service_status: "ACTIVE"
-        },
-        stateData: {
-          a: 1,
-          b: 2
-        }
-      },
-      {
-        setOfData: {
-          label_name: "Service Level 2",
-          field_name: "LEVEL_2_2",
-          field_value: "EDGM Program Management Oversight",
-          service_status: "ACTIVE"
-        },
-        stateData: {
-          a: 1,
-          b: 2
-        }
-      },
-      {
-        setOfData: {
-          label_name: "Service Level 3",
-          field_name: "LEVEL_3_2",
-          field_value: "Management Oversight",
-          service_status: "ACTIVE"
-        },
-        stateData: {
-          a: 1,
-          b: 2
-        }
-      },
-      {
-        setOfData: {
-          label_name: "Service ID",
-          field_name: "SERVICE_ID_2",
-          field_value: "100356",
-        },
-        stateData: {
-          a: 1,
-          b: 2
-        }
-      },
-      {
-        setOfData: {
-          label_name: "Cost Centers",
-          field_name: "COST_CENTERS_2",
-          field_value: "7001406;7001406 EDGM;State Street Bank and Trust Company;Y",
-        },
-        stateData: {
-          a: 1,
-          b: 2
-        }
-      },
-      {
-        setOfData: {
-          label_name: "Critical Service",
-          field_name: "SVC_CRITICAL_SERVICE_3",
-          field_value: "Yes",
-        },
-        stateData: {
-          a: 1,
-          b: 2
-        }
-      }
-    ],
-    visible: false,
-    isNested: true
-  }
-];
+// async function print(value, ms) {
+//   await new Promise(resolve => {
+//     setTimeout(resolve, ms);
+//   });
+//   console.log(value);
+// };
+// print('hello world', 50);
